@@ -4,11 +4,14 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 
 const Navs = () => {
     const { user, logout } = useContext(AuthContext);
+    console.log(user);
     const handleLogOut = () => {
         logout()
             .then(() => { })
             .catch(error => console.log(error))
     }
+
+    const isAdmin = user && user.email === 'admin@admin.com';
 
 
     return (
@@ -90,17 +93,21 @@ const Navs = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {
-                    user ? <>
+                {user ? (
+                    <>
+                        <p className="text-lg mr-4">{user.displayName}</p>
+                        {isAdmin && (
+                            <Link to='/secret'>
+                                <button className="btn">Control Panel</button>
+                            </Link>
+                        )}
                         <button onClick={handleLogOut} className="btn">Logout</button>
-
-                    </> : <>
-                        <Link to='/login'>
-                            <button className="btn">Login</button>
-                        </Link>
                     </>
-                }
-
+                ) : (
+                    <Link to='/login'>
+                        <button className="btn">Login</button>
+                    </Link>
+                )}
             </div>
         </div>
     );

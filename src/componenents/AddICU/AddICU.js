@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 
 const AddICU = () => {
@@ -40,11 +39,7 @@ const AddICU = () => {
             <div className='mb-4'>
                 <h3 className='text-2xl py-1 mb-2 mt-14 text-white font-semibold bg-amber-700 w-1/2 mx-auto'><p className='text-center'>Add New ICU</p></h3>
                 <hr />
-                <div className=' ml-72'>
-                    <Link to='/addicu'>
-                        <button className="btn btn-success">All Chocolates</button>
-                    </Link>
-                </div>
+
                 <div className='w-3/4 mx-auto'>
                     <form onSubmit={handleAdd}>
                         <div className="form-control">

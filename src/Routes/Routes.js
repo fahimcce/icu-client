@@ -10,6 +10,8 @@ import AddDoctors from "../componenents/Adddoctors/AddDoctors";
 import Doctors from "../componenents/Doctors/Doctors";
 import Login from "../componenents/Login/Login";
 import Registration from "../componenents/Login/Registration";
+import PrivateRoute from "./PrivateRoute";
+import Secret from "../componenents/Secret/Secret";
 
 export const router = createBrowserRouter([
     {
@@ -40,7 +42,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/doctors",
-                element: <Doctors></Doctors>,
+                element: <PrivateRoute><Doctors></Doctors></PrivateRoute>,
                 loader: () => fetch('http://localhost:5000/doctors')
             },
             {
@@ -50,6 +52,10 @@ export const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Registration></Registration>
+            },
+            {
+                path: "/secret",
+                element: <PrivateRoute><Secret></Secret></PrivateRoute>
             },
         ]
     },
