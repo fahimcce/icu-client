@@ -12,6 +12,8 @@ import AddICU from './componenents/AddICU/AddICU';
 import Allicu from './componenents/Allicu/Allicu';
 import Doctors from './componenents/Doctors/Doctors';
 import AddDoctors from './componenents/Adddoctors/AddDoctors';
+import Login from './componenents/Login/Login';
+import Registration from './componenents/Login/Registration';
 
 
 const router = createBrowserRouter([
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
     path: "/doctors",
     element: <Doctors></Doctors>,
     loader: () => fetch('http://localhost:5000/doctors')
+  },
+  {
+    path: "/login",
+    element: <Login></Login>
+  },
+  {
+    path: "/register",
+    element: <Registration></Registration>
   },
 ]);
 
