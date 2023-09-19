@@ -6,8 +6,6 @@ import Navs from '../Home/Navs/Navs';
 const Main = () => {
     const location = useLocation();
     const isLogin = location.pathname.includes('login');
-
-
     return (
         <div>
             <Navs></Navs>
