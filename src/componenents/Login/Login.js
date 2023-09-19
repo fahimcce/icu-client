@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import img from '../../../src/login.svg'
-import Navs from '../Home/Navs/Navs';
+
 
 const Login = () => {
     const handleLogin = event => {
@@ -13,9 +13,7 @@ const Login = () => {
 
     return (
         <div>
-            <div>
-                <Navs></Navs>
-            </div>
+
             <div className='mt-4'>
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex-col lg:flex-row">

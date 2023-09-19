@@ -23,7 +23,7 @@ const Allicu = () => {
     }
     return (
         <div>
-            <Navs></Navs>
+
             <div>
                 {
                     hospitals.map(icu => <div key={icu._id}>

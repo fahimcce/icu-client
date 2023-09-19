@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navs from '../Home/Navs/Navs';
+
 
 const AddICU = () => {
 
@@ -36,9 +36,7 @@ const AddICU = () => {
 
     return (
         <div>
-            <div>
-                <Navs></Navs>
-            </div>
+
             <div className='mb-4'>
                 <h3 className='text-2xl py-1 mb-2 mt-14 text-white font-semibold bg-amber-700 w-1/2 mx-auto'><p className='text-center'>Add New ICU</p></h3>
                 <hr />

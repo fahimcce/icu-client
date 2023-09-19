@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import img from '../../../src/login.svg'
-import Navs from '../Home/Navs/Navs';
+
 
 const Registration = () => {
     const handleSignUp = event => {
@@ -11,9 +11,7 @@ const Registration = () => {
 
     return (
         <div>
-            <div>
-                <Navs></Navs>
-            </div>
+
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="mr-12 w-1/2">

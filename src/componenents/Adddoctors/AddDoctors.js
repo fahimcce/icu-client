@@ -1,5 +1,5 @@
 import React from 'react';
-import Navs from '../Home/Navs/Navs';
+
 import { Link } from 'react-router-dom';
 
 const AddDoctors = () => {
@@ -33,9 +33,7 @@ const AddDoctors = () => {
 
     return (
         <div>
-            <div>
-                <Navs></Navs>
-            </div>
+
             <div>
                 <div className='mb-4'>
                     <h3 className='text-2xl py-1 mb-2 mt-14 text-white font-semibold bg-amber-700 w-1/2 mx-auto'><p className='text-center'>Add New Doctor</p></h3>

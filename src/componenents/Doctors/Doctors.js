@@ -1,15 +1,11 @@
 import React from 'react';
-import Navs from '../Home/Navs/Navs';
+
 import { useLoaderData } from 'react-router-dom';
 
 const Doctors = () => {
     const doctors = useLoaderData();
     return (
         <div>
-            <div>
-                <Navs></Navs>
-            </div>
-
 
             <div className='grid grid-cols-1 lg:grid-cols-3 mt-4'>
 
