@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
 
 const AddDoctors = () => {
     const addDoctors = event => {
@@ -13,7 +12,7 @@ const AddDoctors = () => {
         const details = form.details.value;
         const doctor = { doctorName, designation, fees, photo, details }
         console.log(doctor)
-        fetch('http://localhost:5000/doctors', {
+        fetch('https://icubd-server.vercel.app/doctors', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -38,11 +37,6 @@ const AddDoctors = () => {
                 <div className='mb-4'>
                     <h3 className='text-2xl py-1 mb-2 mt-14 text-white font-semibold bg-amber-700 w-1/2 mx-auto'><p className='text-center'>Add New Doctor</p></h3>
                     <hr />
-                    <div className=' ml-72'>
-                        <Link to='/addicu'>
-                            <button className="btn btn-success">All Chocolates</button>
-                        </Link>
-                    </div>
                     <div className='w-3/4 mx-auto'>
                         <form onSubmit={addDoctors}>
                             <div className="form-control">

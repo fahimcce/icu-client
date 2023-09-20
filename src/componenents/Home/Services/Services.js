@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const Services = () => {
+
     return (
         <div className='mt-4'>
             <div>
@@ -17,7 +19,7 @@ const Services = () => {
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title text-3xl">ICU</h2>
-                            <p>Total available ICU : <p className='text-xl font-bold text-green-500'>56+</p></p>
+                            <p>Total available ICU : <p className='text-xl font-bold text-green-500'>50+</p></p>
                             <div className="card-actions">
 
                                 <Link to='allicu'>

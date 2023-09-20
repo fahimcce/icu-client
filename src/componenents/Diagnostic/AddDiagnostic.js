@@ -10,7 +10,7 @@ const AddDiagnostic = () => {
 
         const lab = { name, price }
         console.log(lab)
-        fetch('http://localhost:5000/lab', {
+        fetch('https://icubd-server.vercel.app/lab', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

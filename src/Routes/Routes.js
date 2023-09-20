@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
             {
                 path: "/allicu",
                 element: <Allicu></Allicu>,
-                loader: () => fetch('http://localhost:5000/icu')
+                loader: () => fetch('https://icubd-server.vercel.app/icu')
             },
             {
                 path: "/doctoradd",
@@ -47,7 +47,7 @@ export const router = createBrowserRouter([
             {
                 path: "/doctors",
                 element: <PrivateRoute><Doctors></Doctors></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/doctors')
+                loader: () => fetch('https://icubd-server.vercel.app/doctors')
             },
             {
                 path: "/login",
@@ -64,7 +64,7 @@ export const router = createBrowserRouter([
             {
                 path: "/allmedicine",
                 element: <AllMedicine></AllMedicine>,
-                loader: () => fetch('http://localhost:5000/medicine')
+                loader: () => fetch('https://icubd-server.vercel.app/medicine')
             },
             {
                 path: "/lab",
@@ -73,7 +73,7 @@ export const router = createBrowserRouter([
             {
                 path: "/alllab",
                 element: <AllDiagnostic></AllDiagnostic>,
-                loader: () => fetch('http://localhost:5000/lab')
+                loader: () => fetch('https://icubd-server.vercel.app/lab')
             },
             {
                 path: "/secret",

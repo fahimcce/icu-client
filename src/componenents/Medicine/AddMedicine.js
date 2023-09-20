@@ -10,7 +10,7 @@ const AddMedicine = () => {
 
         const medicine = { name, price }
         console.log(medicine)
-        fetch('http://localhost:5000/medicine', {
+        fetch('https://icubd-server.vercel.app/medicine', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData, } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import { AuthContext } from '../../Providers/AuthProvider';
+import { calculateTotalAvailableSeats } from './IcuSeat';
 
 
 const Allicu = () => {
@@ -10,6 +11,7 @@ const Allicu = () => {
     const [hospitals, setHospitals] = useState(allicu);
     const [noDataFound, setNoDataFound] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const totalAvailableSeats = calculateTotalAvailableSeats(allicu);
 
     const isAdmin = user && user.email === 'admin@admin.com';
 
@@ -24,7 +26,7 @@ const Allicu = () => {
 
     const deleteIcu = _id => {
         console.log('delete', _id);
-        fetch(`http://localhost:5000/icu/${_id}`, {
+        fetch(`https://icubd-server.vercel.app/icu/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -53,8 +55,10 @@ const Allicu = () => {
 
 
 
+
     return (
         <div>
+            <h1 className='text-3xl text-center font-semibold text-yellow-900'>Total Available ICU : {totalAvailableSeats}+</h1><hr />
             <SearchBar handleSearch={handleSearch} />
             <div>
                 {isLoading ? ( // Check loading state

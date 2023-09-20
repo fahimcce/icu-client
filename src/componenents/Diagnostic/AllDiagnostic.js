@@ -33,7 +33,7 @@ const AllDiagnostic = () => {
 
     const handleDelete = _id => {
         console.log('Please delete', _id)
-        fetch(`http://localhost:5000/lab/${_id}`, {
+        fetch(`https://icubd-server.vercel.app/lab/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

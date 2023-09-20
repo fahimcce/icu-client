@@ -14,7 +14,7 @@ const AddICU = () => {
         const date = form.dateTime.value;
         const icu = { name, seat, price, details, date }
         console.log(icu)
-        fetch('http://localhost:5000/icu', {
+        fetch('https://icubd-server.vercel.app/icu', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
