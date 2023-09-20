@@ -12,6 +12,10 @@ import Login from "../componenents/Login/Login";
 import Registration from "../componenents/Login/Registration";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../componenents/Secret/Secret";
+import AddMedicine from "../componenents/Medicine/AddMedicine";
+import AllMedicine from "../componenents/Medicine/AllMedicine";
+import AddDiagnostic from "../componenents/Diagnostic/AddDiagnostic";
+import AllDiagnostic from "../componenents/Diagnostic/AllDiagnostic";
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +56,24 @@ export const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Registration></Registration>
+            },
+            {
+                path: "/medicine",
+                element: <AddMedicine></AddMedicine>
+            },
+            {
+                path: "/allmedicine",
+                element: <AllMedicine></AllMedicine>,
+                loader: () => fetch('http://localhost:5000/medicine')
+            },
+            {
+                path: "/lab",
+                element: <AddDiagnostic></AddDiagnostic>
+            },
+            {
+                path: "/alllab",
+                element: <AllDiagnostic></AllDiagnostic>,
+                loader: () => fetch('http://localhost:5000/lab')
             },
             {
                 path: "/secret",

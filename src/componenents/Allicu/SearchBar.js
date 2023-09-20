@@ -4,15 +4,19 @@ const SearchBar = ({ handleSearch }) => {
     const [searchText, setSearchText] = useState('');
 
     const handleChange = (e) => {
-        setSearchText(e.target.value);
+        const inputText = e.target.value;
+        setSearchText(inputText);
+        // Call the handleSearch function with the input text to filter the results
+        handleSearch(inputText);
     };
 
     const handleSearchClick = () => {
+        // Call the handleSearch function with the current searchText
         handleSearch(searchText);
     };
 
     return (
-        <div className="flex flex-col items-center space-y-4 mb-4 mt-4">
+        <div className="flex  items-center mt-2">
             <input
                 type="text"
                 placeholder="Search by Name"
@@ -21,7 +25,7 @@ const SearchBar = ({ handleSearch }) => {
                 onChange={handleChange}
             />
             <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                className="bg-blue-500 text-white px-4 py-2 mx-1 rounded-lg"
                 onClick={handleSearchClick}
             >
                 Search

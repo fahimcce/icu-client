@@ -10,19 +10,22 @@ const Secret = () => {
             </div>
             <div className='m-20  flex justify-center'>
                 <Link to='/icuadd'>
-                    <button className="btn btn-success mx-4">+ Add ICU</button>
+                    <button className="btn btn-success mx-2">+ Add ICU</button>
                 </Link>
                 <Link to='/doctoradd'>
-                    <button className="btn btn-success mx-4">+ Add ICU</button>
+                    <button className="btn btn-success mx-2">+ Add Doctor</button>
                 </Link>
                 <Link to='/doctoradd'>
-                    <button className="btn btn-success mx-4">+ Blood Donor</button>
+                    <button className="btn btn-success mx-2">+ Blood Donor</button>
                 </Link>
                 <Link to='/doctoradd'>
-                    <button className="btn btn-success mx-4">+ Add Ambulance</button>
+                    <button className="btn btn-success mx-2">+ Add Ambulance</button>
                 </Link>
-                <Link to='/doctoradd'>
-                    <button className="btn btn-success mx-4">+ Make Admin</button>
+                <Link to='/medicine'>
+                    <button className="btn btn-success mx-2">+ Add Medicine</button>
+                </Link>
+                <Link to='/lab'>
+                    <button className="btn btn-success mx-2">+ Lab Test</button>
                 </Link>
 
             </div>

@@ -33,22 +33,22 @@ const Navs = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to='/icuadd'>
+                            <Link to='/allmedicine'>
                                 Medicine
                             </Link>
                         </li>
                         <li>
-                            <Link to='/icuadd'>
+                            <Link to='/alllab'>
                                 Diagnostic
                             </Link>
                         </li>
                         <li>
-                            <Link to='/icuadd'>
+                            <Link to='/'>
                                 Blood
                             </Link>
                         </li>
                         <li>
-                            <Link to='/icuadd'>
+                            <Link to='/'>
                                 Ambulance
                             </Link>
                         </li>
@@ -70,22 +70,22 @@ const Navs = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to='/icuadd'>
+                        <Link to='/allmedicine'>
                             Medicine
                         </Link>
                     </li>
                     <li>
-                        <Link to='/icuadd'>
+                        <Link to='/alllab'>
                             Diagnostic
                         </Link>
                     </li>
                     <li>
-                        <Link to='/icuadd'>
+                        <Link to='/'>
                             Blood
                         </Link>
                     </li>
                     <li>
-                        <Link to='/icuadd'>
+                        <Link to='/'>
                             Ambulance
                         </Link>
                     </li>

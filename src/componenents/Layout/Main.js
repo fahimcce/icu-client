@@ -6,11 +6,14 @@ import Navs from '../Home/Navs/Navs';
 const Main = () => {
     const location = useLocation();
     const isLogin = location.pathname.includes('login');
+    const allmedicine = location.pathname.includes('allmedicine');
+    const allicu = location.pathname.includes('allicu');
+    const alllab = location.pathname.includes('alllab');
     return (
         <div>
             <Navs></Navs>
             <Outlet></Outlet>
-            {isLogin || <Footer></Footer>}
+            {isLogin || allmedicine || allicu || alllab || <Footer></Footer>}
         </div>
     );
 };

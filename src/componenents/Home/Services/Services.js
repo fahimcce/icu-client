@@ -35,7 +35,7 @@ const Services = () => {
                             <h2 className="card-title text-3xl">Doctors</h2>
                             <p>Total listed Doctors : <p className='text-xl font-bold text-green-500'>500+</p></p>
                             <div className="card-actions">
-                                <Link to='/doctors'>
+                                <Link to='/alldoctors'>
                                     <button className="btn btn-primary text-white">Show doctors..</button>
                                 </Link>
                             </div>
@@ -50,7 +50,9 @@ const Services = () => {
                             <h2 className="card-title text-3xl">Medicine Price</h2>
                             <p>Total listed Medicine : <p className='text-xl font-bold text-green-500'>2000+</p></p>
                             <div className="card-actions">
-                                <button className="btn btn-primary">Buy Now</button>
+                                <Link to='/allmedicine'>
+                                    <button className="btn btn-primary text-white">Medicine Prices..</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -63,7 +65,9 @@ const Services = () => {
                             <h2 className="card-title text-3xl">Lab Test Prices</h2>
                             <p>Total types lab test : <p className='text-xl font-bold text-green-500'>350+</p></p>
                             <div className="card-actions">
-                                <button className="btn btn-primary">See prices</button>
+                                <Link to='/alllab'>
+                                    <button className="btn btn-primary text-white">lab test..</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
