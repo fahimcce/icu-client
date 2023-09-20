@@ -43,7 +43,7 @@ const Navs = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to='/'>
+                            <Link to='/allBlood'>
                                 Blood
                             </Link>
                         </li>
@@ -80,7 +80,7 @@ const Navs = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to='/'>
+                        <Link to='/allBlood'>
                             Blood
                         </Link>
                     </li>

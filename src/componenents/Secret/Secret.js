@@ -15,7 +15,7 @@ const Secret = () => {
                 <Link to='/doctoradd'>
                     <button className="btn btn-success mx-2">+ Add Doctor</button>
                 </Link>
-                <Link to='/doctoradd'>
+                <Link to='/addBlood'>
                     <button className="btn btn-success mx-2">+ Blood Donor</button>
                 </Link>
                 <Link to='/doctoradd'>

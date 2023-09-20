@@ -49,6 +49,7 @@ const Doctors = () => {
 
     return (
         <div>
+            <h1 className='text-3xl text-center font-semibold text-sky-600'><i className="fas fa-hand-point-right mx-2"></i>Find your Doctor..</h1><hr />
             <SearchBar handleSearch={handleSearch} />
             <div className='grid grid-cols-1 lg:grid-cols-3 mt-4'>
                 {noDataFound ? (

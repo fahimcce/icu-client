@@ -33,8 +33,6 @@ const AddMedicine = () => {
             })
     }
 
-
-
     return (
         <div>
             <div className='mb-4'>

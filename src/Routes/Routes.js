@@ -16,6 +16,8 @@ import AddMedicine from "../componenents/Medicine/AddMedicine";
 import AllMedicine from "../componenents/Medicine/AllMedicine";
 import AddDiagnostic from "../componenents/Diagnostic/AddDiagnostic";
 import AllDiagnostic from "../componenents/Diagnostic/AllDiagnostic";
+import AddBlood from "../componenents/Blood/AddBlood";
+import AllBlood from "../componenents/Blood/AllBlood";
 
 export const router = createBrowserRouter([
     {
@@ -75,6 +77,16 @@ export const router = createBrowserRouter([
                 element: <AllDiagnostic></AllDiagnostic>,
                 loader: () => fetch('http://localhost:5000/lab')
             },
+            {
+                path: "/addBlood",
+                element: <AddBlood></AddBlood>,
+            },
+            {
+                path: "/allBlood",
+                element: <PrivateRoute><AllBlood></AllBlood></PrivateRoute>,
+                loader: () => fetch('http://localhost:5000/donar')
+            },
+
             {
                 path: "/secret",
                 element: <PrivateRoute><Secret></Secret></PrivateRoute>

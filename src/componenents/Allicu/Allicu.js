@@ -73,7 +73,7 @@ const Allicu = () => {
 
     return (
         <div>
-            <h1 className='text-3xl text-center font-semibold text-yellow-900'>Total Available ICU : {totalAvailableSeats}+</h1><hr />
+            <h1 className='text-3xl text-center font-semibold text-yellow-900'><i className="fas fa-hand-point-right mx-2"></i>Total Available ICU : <span className='text-green-500'>{totalAvailableSeats}</span></h1><hr />
             <SearchBar handleSearch={handleSearch} />
             <div>
                 {isLoading ? ( // Check loading state
