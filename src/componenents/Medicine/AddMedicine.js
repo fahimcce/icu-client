@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddMedicine = () => {
     const handleAdd = event => {
@@ -10,7 +11,7 @@ const AddMedicine = () => {
 
         const medicine = { name, price }
         console.log(medicine)
-        fetch('https://icubd-server.vercel.app/medicine', {
+        fetch('http://localhost:5000/medicine', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -21,7 +22,12 @@ const AddMedicine = () => {
             .then(data => {
                 console.log(data)
                 if (data.insertedId) {
-                    alert('Medicine added SuccessFully')
+                    Swal.fire({
+                        title: 'Success Fully',
+                        text: 'New Medicine added',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
                     form.reset();
                 }
             })

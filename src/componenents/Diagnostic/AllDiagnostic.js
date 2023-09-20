@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import SearchBar from '../Allicu/SearchBar';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import Swal from 'sweetalert2';
 
 const AllDiagnostic = () => {
     const labs = useLoaderData();
@@ -32,16 +34,37 @@ const AllDiagnostic = () => {
     };
 
     const handleDelete = _id => {
-        console.log('Please delete', _id)
-        fetch(`https://icubd-server.vercel.app/lab/${_id}`, {
-            method: 'DELETE'
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                console.log('Please delete', _id)
+                fetch(`http://localhost:5000/lab/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            const remaining = alllabs.filter(lab => lab._id !== _id);
+                            setlabs(remaining)
+
+                        }
+                    })
+
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    alert('Deleted Success')
-                }
-            })
     }
 
     return (
@@ -80,11 +103,13 @@ const AllDiagnostic = () => {
                                             <td className='text-center' style={{ marginBottom: '1rem' }}>{lab.price}</td>
                                             {
                                                 isAdmin && <td>
-                                                    <button onClick={() => handleDelete(lab._id)} className='bg-white p-1 mx-1'>X</button>
-
-                                                    <Link>
-                                                        <button className='bg-white p-1'>Update</button>
+                                                    <Link className='mx-2' to='/'>
+                                                        <i className="fas fa-edit"></i>
                                                     </Link>
+                                                    <button onClick={() => handleDelete(lab._id)} >
+                                                        <i className="fas fa-trash-alt"></i>
+                                                    </button>
+
                                                 </td>
                                             }
                                         </tr>

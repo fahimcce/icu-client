@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 
 const AddICU = () => {
@@ -14,7 +15,7 @@ const AddICU = () => {
         const date = form.dateTime.value;
         const icu = { name, seat, price, details, date }
         console.log(icu)
-        fetch('https://icubd-server.vercel.app/icu', {
+        fetch('http://localhost:5000/icu', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -25,7 +26,12 @@ const AddICU = () => {
             .then(data => {
                 console.log(data)
                 if (data.insertedId) {
-                    alert('ICU added SuccessFully')
+                    Swal.fire({
+                        title: 'Success Fully',
+                        text: 'New ICU added',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
                     form.reset();
                 }
             })

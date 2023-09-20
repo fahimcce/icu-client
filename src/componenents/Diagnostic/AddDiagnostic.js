@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddDiagnostic = () => {
     const handlelabTest = event => {
@@ -10,7 +11,7 @@ const AddDiagnostic = () => {
 
         const lab = { name, price }
         console.log(lab)
-        fetch('https://icubd-server.vercel.app/lab', {
+        fetch('http://localhost:5000/lab', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -21,7 +22,12 @@ const AddDiagnostic = () => {
             .then(data => {
                 console.log(data)
                 if (data.insertedId) {
-                    alert('lab test add SuccessFully')
+                    Swal.fire({
+                        title: 'successFully',
+                        text: 'New lab test added',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
                     form.reset();
                 }
             })

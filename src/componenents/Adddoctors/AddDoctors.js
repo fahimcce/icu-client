@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 
 const AddDoctors = () => {
@@ -8,11 +9,12 @@ const AddDoctors = () => {
         const doctorName = form.doctorname.value;
         const designation = form.designation.value;
         const fees = form.fees.value;
+        const categories = form.categories.value;
         const photo = form.photo.value;
         const details = form.details.value;
-        const doctor = { doctorName, designation, fees, photo, details }
+        const doctor = { doctorName, categories, designation, fees, photo, details }
         console.log(doctor)
-        fetch('https://icubd-server.vercel.app/doctors', {
+        fetch('http://localhost:5000/doctors', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -23,7 +25,12 @@ const AddDoctors = () => {
             .then(data => {
                 console.log(data)
                 if (data.insertedId) {
-                    alert('Doctor added SuccessFully')
+                    Swal.fire({
+                        title: 'Success Fully',
+                        text: 'New Doctor added',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
                     form.reset();
                 }
             })
@@ -45,6 +52,14 @@ const AddDoctors = () => {
                                 </label>
                                 <label className="input-group">
                                     <input type="text" name="doctorname" placeholder="Enter Doctor Name" className="input input-bordered w-full" />
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Categories</span>
+                                </label>
+                                <label className="input-group">
+                                    <input type="text" name="categories" placeholder="Enter categories" className="input input-bordered w-full" />
                                 </label>
                             </div>
                             <div className="form-control">

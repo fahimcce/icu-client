@@ -2,7 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData, } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import { AuthContext } from '../../Providers/AuthProvider';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { calculateTotalAvailableSeats } from './IcuSeat';
+import Swal from 'sweetalert2';
 
 
 const Allicu = () => {
@@ -25,18 +27,34 @@ const Allicu = () => {
     }, []);
 
     const deleteIcu = _id => {
-        console.log('delete', _id);
-        fetch(`https://icubd-server.vercel.app/icu/${_id}`, {
-            method: 'DELETE'
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log('delete', _id);
+                fetch(`http://localhost:5000/icu/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'ICU deleted.',
+                                'success'
+                            )
+                            const remaining = hospitals.filter(hospital => hospital._id !== _id);
+                            setHospitals(remaining)
+                        }
+                    })
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    alert('SuccessFully Deleted')
-                    const remaining = hospitals.filter(hospital => hospital._id !== _id);
-                    setHospitals(remaining)
-                }
-            })
     }
 
     const handleSearch = (searchText) => {
@@ -52,9 +70,6 @@ const Allicu = () => {
             setNoDataFound(false);
         }
     };
-
-
-
 
     return (
         <div>
@@ -82,14 +97,16 @@ const Allicu = () => {
                                     <p>Price : {icu.price} per day ."Based on patient situation"</p>
                                     <p>{icu.details}</p>
                                     {
-                                        isAdmin && (<div className='grid grid-cols-1 md:grid-cols-2'>
-                                            <div>
-                                                <Link className=' mx-2 ' to='/'>
-                                                    <button className=" btn btn-neutral text-right">Update</button>
+                                        isAdmin && (<div className='flex'>
+                                            <div >
+                                                <Link className='mx-2' to='/'>
+                                                    <i className="fas fa-edit"></i>
                                                 </Link>
                                             </div>
                                             <div>
-                                                <button onClick={() => deleteIcu(icu._id)} className=" btn btn-neutral text-right">Delete</button>
+                                                <button onClick={() => deleteIcu(icu._id)}>
+                                                    <i className="fas fa-trash-alt"></i>
+                                                </button>
                                             </div>
                                         </div>)
                                     }
