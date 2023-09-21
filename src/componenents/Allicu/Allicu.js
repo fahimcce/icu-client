@@ -72,7 +72,7 @@ const Allicu = () => {
     };
 
     return (
-        <div>
+        <div className='mb-4'>
             <h1 className='text-3xl text-center font-semibold text-yellow-900'><i className="fas fa-hand-point-right mx-2"></i>Total Available ICU : <span className='text-green-500'>{totalAvailableSeats}</span></h1><hr />
             <SearchBar handleSearch={handleSearch} />
             <div>
@@ -88,7 +88,7 @@ const Allicu = () => {
                         hospitals.map(icu => <div key={icu._id}>
                             <div className="collapse collapse-arrow bg-base-200 mt-4">
                                 <input type="radio" name="my-accordion-2" checked="checked" />
-                                <div className="collapse-title  font-medium flex justify-between  border border-2 ">
+                                <div className="collapse-title grid grid-cols-1 lg:grid-cols-3 font-medium flex justify-between  border border-2 ">
                                     <h1 className='text-xl'>{icu.name}</h1>
                                     <h1 >Available Seats : {icu.seat}</h1>
                                     <h1 >Updates : {icu.date}</h1>

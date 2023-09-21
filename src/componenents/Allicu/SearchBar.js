@@ -10,10 +10,7 @@ const SearchBar = ({ handleSearch }) => {
         handleSearch(inputText);
     };
 
-    const handleSearchClick = () => {
-        // Call the handleSearch function with the current searchText
-        handleSearch(searchText);
-    };
+
 
     return (
         <div className="flex  items-center mt-2">
@@ -24,12 +21,7 @@ const SearchBar = ({ handleSearch }) => {
                 value={searchText}
                 onChange={handleChange}
             />
-            <button
-                className="bg-blue-500 text-white px-4 py-2 mx-1 rounded-lg"
-                onClick={handleSearchClick}
-            >
-                Search
-            </button>
+
         </div>
     );
 };

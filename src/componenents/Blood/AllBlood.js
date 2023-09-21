@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 
 import SearchBlood from './SearchBlood';
+import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AllBlood = () => {
     const donars = useLoaderData();
     const [ndonars, setDonars] = useState(donars);
     const [noDataFound, setNoDataFound] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const { user } = useContext(AuthContext);
+
+    const isAdmin = user && user.email === 'admin@admin.com';
 
     useEffect(() => {
         setTimeout(() => {
@@ -36,14 +41,42 @@ const AllBlood = () => {
         }
     };
 
-
-
+    const deleteDonor = _id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log('delete', _id);
+                fetch(`http://localhost:5000/donar/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Donor deleted.',
+                                'success'
+                            )
+                            const remaining = ndonars.filter(donor => donor._id !== _id);
+                            setDonars(remaining)
+                        }
+                    })
+            }
+        })
+    }
 
     return (
         <div>
             <h1 className='text-3xl text-center font-semibold text-yellow-900'><i className="fas fa-hand-point-right mx-2"></i>Find Your Donar</h1><hr />
             <SearchBlood handleSearch={handleSearch} />
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4 mb-4'>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4 mb-4'>
                 {isLoading ? (
                     <span className="absolute inset-0 flex justify-center items-center">
                         <span className="loading loading-bars loading-lg"></span>
@@ -60,6 +93,20 @@ const AllBlood = () => {
                                 <h2 className="text-center">{donar.name}</h2>
                                 <h2 className="text-center">{donar.group}</h2>
                                 <h2 className="text-center">{donar.contact}</h2>
+                                {
+                                    isAdmin && (<div className='flex'>
+                                        <div >
+                                            <Link className='mx-2' to='/'>
+                                                <i className="fas fa-edit"></i>
+                                            </Link>
+                                        </div>
+                                        <div>
+                                            <button onClick={() => deleteDonor(donar._id)}>
+                                                <i className="fas fa-trash-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>)
+                                }
                             </div>
                         </div>
                     ))
