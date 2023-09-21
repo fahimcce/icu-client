@@ -76,7 +76,7 @@ const AllBlood = () => {
         <div>
             <h1 className='text-3xl text-center font-semibold text-yellow-900'><i className="fas fa-hand-point-right mx-2"></i>Find Your Donar</h1><hr />
             <SearchBlood handleSearch={handleSearch} />
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4 mb-4'>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4 mb-4'>
                 {isLoading ? (
                     <span className="absolute inset-0 flex justify-center items-center">
                         <span className="loading loading-bars loading-lg"></span>

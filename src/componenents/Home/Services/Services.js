@@ -37,7 +37,7 @@ const Services = () => {
                             <h2 className="card-title text-3xl">Doctors</h2>
                             <p>Total listed Doctors : <p className='text-xl font-bold text-green-500'>500+</p></p>
                             <div className="card-actions">
-                                <Link to='/alldoctors'>
+                                <Link to='/doctors'>
                                     <button className="btn btn-primary text-white">Show doctors..</button>
                                 </Link>
                             </div>
@@ -81,9 +81,9 @@ const Services = () => {
                         <div className="card-body items-center text-center">
                             <h2 className="card-title text-3xl">Blood</h2>
                             <p>Total listed Blood Donor : <p className='text-xl font-bold text-green-500'>700+</p></p>
-                            <div className="card-actions">
-                                <button className="btn btn-primary">Donars..</button>
-                            </div>
+                            <Link to='/allBlood'>
+                                <button className="btn btn-primary text-white">Show Donars..</button>
+                            </Link>
                         </div>
                     </div>
                     {/* card 06 */}
@@ -94,9 +94,9 @@ const Services = () => {
                         <div className="card-body items-center text-center">
                             <h2 className="card-title text-3xl">Ambulance</h2>
                             <p>Total listed Ambulance : <p className='text-xl font-bold text-green-500 '>100+</p></p>
-                            <div className="card-actions">
-                                <button className="btn btn-primary text-white">Hire Now</button>
-                            </div>
+                            <Link to='/allambulance'>
+                                <button className="btn btn-primary text-white">Show Donars..</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

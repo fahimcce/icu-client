@@ -18,6 +18,8 @@ import AddDiagnostic from "../componenents/Diagnostic/AddDiagnostic";
 import AllDiagnostic from "../componenents/Diagnostic/AllDiagnostic";
 import AddBlood from "../componenents/Blood/AddBlood";
 import AllBlood from "../componenents/Blood/AllBlood";
+import AddAmbulance from "../componenents/Ambulance/AddAmbulance";
+import ShowAmbulance from "../componenents/Ambulance/ShowAmbulance";
 
 export const router = createBrowserRouter([
     {
@@ -48,7 +50,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/doctors",
-                element: <PrivateRoute><Doctors></Doctors></PrivateRoute>,
+                element: <Doctors></Doctors>,
                 loader: () => fetch('http://localhost:5000/doctors')
             },
             {
@@ -90,6 +92,15 @@ export const router = createBrowserRouter([
             {
                 path: "/secret",
                 element: <PrivateRoute><Secret></Secret></PrivateRoute>
+            },
+            {
+                path: "/addAmbulance",
+                element: <AddAmbulance></AddAmbulance>,
+            },
+            {
+                path: "/allAmbulance",
+                element: <ShowAmbulance></ShowAmbulance>,
+                loader: () => fetch('http://localhost:5000/ambulance')
             },
         ]
     },

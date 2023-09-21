@@ -90,14 +90,14 @@ const Allicu = () => {
                                 <input type="radio" name="my-accordion-2" checked="checked" />
                                 <div className="collapse-title grid grid-cols-1 lg:grid-cols-3 font-medium flex justify-between  border border-2 ">
                                     <h1 className='text-xl'>{icu.name}</h1>
-                                    <h1 >Available Seats : {icu.seat}</h1>
-                                    <h1 >Updates : {icu.date}</h1>
+                                    <h1 className='text-center'>Available Seats : <span className='text-red-600 font-bold'>{icu.seat}</span></h1>
+                                    <h1 className='text-center'>Updates : {icu.date}</h1>
                                 </div>
                                 <div className="collapse-content">
-                                    <p>Price : {icu.price} per day ."Based on patient situation"</p>
+                                    <p>Price : <span className='font-bold'>{icu.price}</span> taka per day ."Based on patient situation"</p>
                                     <p>{icu.details}</p>
                                     {
-                                        isAdmin && (<div className='flex'>
+                                        isAdmin && (<div className='flex justify-center'>
                                             <div >
                                                 <Link className='mx-2' to='/'>
                                                     <i className="fas fa-edit"></i>

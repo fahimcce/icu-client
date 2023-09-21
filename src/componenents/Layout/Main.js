@@ -11,11 +11,12 @@ const Main = () => {
     const alllab = location.pathname.includes('alllab');
     const allblood = location.pathname.includes('allBlood');
     const alldoctors = location.pathname.includes('doctors');
+    const allAmbulance = location.pathname.includes('allAmbulance');
     return (
         <div>
             <Navs></Navs>
             <Outlet></Outlet>
-            {isLogin || allmedicine || allicu || alllab || allblood || alldoctors || <Footer></Footer>}
+            {isLogin || allmedicine || allicu || alllab || allblood || alldoctors || allAmbulance || <Footer></Footer>}
         </div>
     );
 };

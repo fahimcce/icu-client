@@ -3,16 +3,24 @@ import { Link, useLoaderData } from 'react-router-dom';
 import SearchBar from '../Allicu/SearchBar';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Doctors = () => {
     const doctors = useLoaderData();
     const [filteredDoctors, setFilteredDoctors] = useState(doctors);
     const [selectedDoctor, setSelectedDoctor] = useState(null);
     const [noDataFound, setNoDataFound] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const modalRef = useRef(null);
     const { user } = useContext(AuthContext);
 
     const isAdmin = user && user.email === 'admin@admin.com';
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+    }, []);
 
     const handleSearch = (searchText) => {
         const filteredDoctors = doctors.filter((doctor) =>
@@ -47,41 +55,80 @@ const Doctors = () => {
         }
     }, [selectedDoctor]);
 
+    // delete Doctor
+    const deleteDoctor = _id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log('delete', _id);
+                fetch(`http://localhost:5000/doctors/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'ICU deleted.',
+                                'success'
+                            )
+                            const remaining = filteredDoctors.filter(doctor => doctor._id !== _id);
+                            setFilteredDoctors(remaining)
+                        }
+                    })
+            }
+        })
+    }
+
     return (
-        <div>
+        <div className='mb-4'>
             <h1 className='text-3xl text-center font-semibold text-sky-600'><i className="fas fa-hand-point-right mx-2"></i>Find your Doctor..</h1><hr />
             <SearchBar handleSearch={handleSearch} />
             <div className='grid grid-cols-1 lg:grid-cols-3 mt-4'>
-                {noDataFound ? (
-                    <p className="text-red-500 text-center">No data found.</p>
-                ) : (
-                    filteredDoctors.map((doctor) => (
-                        <div key={doctor._id} className="card w-72 bg-base-100 shadow-xl mx-auto mt-2">
-                            <figure><img src={doctor.photo} alt="Shoes" /></figure>
-                            <div className="card-body">
-                                <h2 className="text-center font-bold text-1xl">{doctor.doctorName}</h2>
-                                <h1 className='font-semibold'>Dept.: {doctor.categories}</h1>
-                                <p>{doctor.designation}</p>
-                                <div className="card-actions justify-end">
-                                    <button className="btn btn-primary text-white" onClick={() => openModal(doctor)}>
-                                        Appointment
-                                    </button>
-                                    {
-                                        isAdmin && <>
-                                            <Link>
-                                                <i className="fas fa-edit"></i>
-                                            </Link>
-                                            <button>
-                                                <i className="fas fa-trash-alt"></i>
+                {
+                    isLoading ? ( // Check loading state
+                        // Display loading bar while loading
+                        <span className="absolute inset-0 flex justify-center items-center">
+                            <span className="loading loading-bars loading-lg"></span>
+                        </span>
+                    ) :
+                        noDataFound ? (
+                            <p className="text-red-500 text-center">No data found.</p>
+                        ) : (
+                            filteredDoctors.map((doctor) => (
+                                <div key={doctor._id} className="card w-72 bg-base-100 shadow-xl mx-auto mt-2">
+                                    <figure><img src={doctor.photo} alt="Shoes" /></figure>
+                                    <div className="card-body">
+                                        <h2 className="text-center font-bold text-1xl">{doctor.doctorName}</h2>
+                                        <h1 className='font-semibold'>Dept.: {doctor.categories}</h1>
+                                        <p>{doctor.designation}</p>
+                                        <div className="card-actions justify-end">
+                                            <button className="btn btn-primary text-white" onClick={() => openModal(doctor)}>
+                                                Appointment
                                             </button>
+                                            {
+                                                isAdmin && <>
+                                                    <Link>
+                                                        <i className="fas fa-edit"></i>
+                                                    </Link>
+                                                    <button onClick={() => deleteDoctor(doctor._id)}>
+                                                        <i className="fas fa-trash-alt"></i>
+                                                    </button>
 
-                                        </>
-                                    }
+                                                </>
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    ))
-                )}
+                            ))
+                        )}
             </div>
 
             <dialog id="my_modal_2" className="modal" ref={modalRef}>

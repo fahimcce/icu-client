@@ -48,7 +48,7 @@ const Navs = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to='/'>
+                            <Link to='/allAmbulance'>
                                 Ambulance
                             </Link>
                         </li>
@@ -85,7 +85,7 @@ const Navs = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to='/'>
+                        <Link to='/allAmbulance'>
                             Ambulance
                         </Link>
                     </li>

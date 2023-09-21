@@ -68,7 +68,7 @@ const AllMedicine = () => {
     }
 
     return (
-        <div>
+        <div className='mb-4'>
             <h1 className='text-3xl text-center font-semibold text-yellow-900'><i className="fas fa-hand-point-right mx-2"></i>Medicine Prices</h1><hr />
             <SearchBar handleSearch={handleSearch} />
             <h1 className='text-red-600 font-bold mb-1'>"Prices may vary depending on the pharmacy and company"</h1>

@@ -11,13 +11,9 @@ const SearchBlood = ({ handleSearch }) => {
         handleSearch(inputText);
     };
 
-    const handleSearchClick = () => {
-        // Call the handleSearch function with the current searchText
-        handleSearch(searchText);
-    };
 
     return (
-        <div className="search-bar mt-2">
+        <div className="search-bar mt-2 flex justify-between">
             <input
                 type="text"
                 placeholder="Search by blood group..."
@@ -25,12 +21,6 @@ const SearchBlood = ({ handleSearch }) => {
                 value={searchText}
                 onChange={handleChange}
             />
-            <button
-                className="bg-blue-500 text-white px-4 py-2 mx-1 rounded-lg"
-                onClick={handleSearchClick}
-            >
-                Search
-            </button>
             <Link to='/addBlood'>
                 <button className="bg-blue-500 text-white px-4 py-2 mx-1 rounded-lg">
                     Became a Donar
