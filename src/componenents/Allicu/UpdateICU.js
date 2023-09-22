@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateICU = () => {
     const updateICU = useLoaderData();
@@ -47,7 +48,12 @@ const UpdateICU = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('Update SuccessFully')
+                    Swal.fire({
+                        title: 'Success Fully',
+                        text: 'Ambulance Updated',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
                     form.reset();
                     navigate('/allicu')
                 }
@@ -104,7 +110,7 @@ const UpdateICU = () => {
 
 
                         {/* Submit Button */}
-                        <input className="btn btn-ghost mt-4 bg-amber-700 w-full text-white" type="submit" value="ADD" />
+                        <input className="btn btn-ghost mt-4 bg-amber-700 w-full text-white" type="submit" value="Update ICU" />
                     </form>
                 </div>
             </div>

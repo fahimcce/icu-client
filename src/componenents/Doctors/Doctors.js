@@ -106,10 +106,10 @@ const Doctors = () => {
                                 <div key={doctor._id} className="card w-56 bg-base-100 shadow-xl mx-auto mt-2">
                                     <figure><img src={doctor.photo} alt="Shoes" /></figure>
                                     <div className="card-body">
-                                        <h2 className="text-center font-bold text-1xl">{doctor.doctorName}</h2>
+                                        <h2 className="text-center font-bold text-1xl">Dr {doctor.doctorName}</h2>
                                         <h1 className='font-semibold'>Dept.: {doctor.categories}</h1>
                                         <p>{doctor.designation}</p>
-                                        <p>Fees : {doctor.fees}</p>
+                                        <p>Fees : <span className='font-bold'>{doctor.fees}</span></p>
                                         <div className="card-actions grid grid-cols-1">
                                             <button className="btn btn-primary text-white" onClick={() => openModal(doctor)}>
                                                 Appointment

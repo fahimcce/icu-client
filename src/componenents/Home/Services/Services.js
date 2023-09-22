@@ -23,7 +23,7 @@ const Services = () => {
                             <div className="card-actions">
 
                                 <Link to='allicu'>
-                                    <button className="btn btn-success text-white">Show more..</button>
+                                    <button className="btn btn-primary text-white">Show more..</button>
                                 </Link>
                             </div>
                         </div>

@@ -96,7 +96,7 @@ const AllBlood = () => {
                                 {
                                     isAdmin && (<div className='flex justify-center'>
                                         <div >
-                                            <Link className='mx-2' to='/'>
+                                            <Link className='mx-2' to={`/update/blood/${donar._id}`}>
                                                 <i className="fas fa-edit"></i>
                                             </Link>
                                         </div>

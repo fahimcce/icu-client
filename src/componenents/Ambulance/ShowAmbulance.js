@@ -109,7 +109,7 @@ const ShowAmbulance = () => {
                                 <h1>Contact : <span className="text-lg font-bold">{ambulance.contact}</span></h1>
                                 {isAdmin && (
                                     <div className='flex justify-center'>
-                                        <Link>
+                                        <Link to={`/update/ambulance/${ambulance._id}`}>
                                             <i className="fas fa-edit mx-2"></i>
                                         </Link>
                                         <button onClick={() => deleteAmbulance(ambulance._id)}>

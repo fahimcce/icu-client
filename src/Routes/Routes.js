@@ -23,6 +23,9 @@ import ShowAmbulance from "../componenents/Ambulance/ShowAmbulance";
 import UpdateICU from "../componenents/Allicu/UpdateICU";
 import UpdateDoctor from "../componenents/Doctors/UpdateDoctor";
 import UpdateMedicine from "../componenents/Medicine/UpdateMedicine";
+import UpdateLab from "../componenents/Diagnostic/UpdateLab";
+import UpdateBlood from "../componenents/Blood/UpdateBlood";
+import UpdateAmbulance from "../componenents/Ambulance/UpdateAmbulance";
 
 export const router = createBrowserRouter([
     {
@@ -119,6 +122,21 @@ export const router = createBrowserRouter([
                 path: "/update/medicine/:id",
                 element: <UpdateMedicine></UpdateMedicine>,
                 loader: ({ params }) => fetch(`http://localhost:5000/update/medicine/${params.id}`)
+            },
+            {
+                path: "/update/lab/:id",
+                element: <UpdateLab></UpdateLab>,
+                loader: ({ params }) => fetch(`http://localhost:5000/update/lab/${params.id}`)
+            },
+            {
+                path: "/update/blood/:id",
+                element: <UpdateBlood></UpdateBlood>,
+                loader: ({ params }) => fetch(`http://localhost:5000/update/blood/${params.id}`)
+            },
+            {
+                path: "/update/ambulance/:id",
+                element: <UpdateAmbulance></UpdateAmbulance>,
+                loader: ({ params }) => fetch(`http://localhost:5000/update/ambulance/${params.id}`)
             },
         ]
     },
