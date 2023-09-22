@@ -79,7 +79,7 @@ const AllMedicine = () => {
                         <tr>
                             <th>Index</th>
                             <th>Name</th>
-                            <th className='text-center'>Price(TAKA- 10 teblets)</th>
+                            <th className='text-center'>Price(TAKA- Per Tablet)</th>
                             {
                                 isAdmin && <th>Actions</th>
                             }
@@ -104,7 +104,7 @@ const AllMedicine = () => {
                                             isAdmin && <td>
                                                 <button onClick={() => handleDelete(medicine._id)}> <i className="fas fa-trash-alt"></i></button>
 
-                                                <Link className='mx-2' to='/'>
+                                                <Link className='mx-2' to={`/update/medicine/${medicine._id}`}>
                                                     <i className="fas fa-edit"></i>
                                                 </Link>
                                             </td>
