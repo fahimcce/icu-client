@@ -11,7 +11,7 @@ const AddBlood = () => {
         const group = form.group.value;
         const photo = form.photo.value;
         const donar = { name, contact, group, photo }
-        console.log(donar)
+
         fetch('http://localhost:5000/donar', {
             method: 'POST',
             headers: {
@@ -21,7 +21,7 @@ const AddBlood = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success Fully',

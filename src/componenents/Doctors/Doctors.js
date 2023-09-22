@@ -67,7 +67,7 @@ const Doctors = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log('delete', _id);
+
                 fetch(`http://localhost:5000/doctors/${_id}`, {
                     method: 'DELETE'
                 })

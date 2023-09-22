@@ -50,7 +50,7 @@ const AllDiagnostic = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log('Please delete', _id);
+
                 fetch(`http://localhost:5000/lab/${_id}`, {
                     method: 'DELETE'
                 })

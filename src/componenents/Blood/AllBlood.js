@@ -52,7 +52,7 @@ const AllBlood = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log('delete', _id);
+
                 fetch(`http://localhost:5000/donar/${_id}`, {
                     method: 'DELETE'
                 })
@@ -76,7 +76,7 @@ const AllBlood = () => {
         <div>
             <h1 className='text-3xl text-center font-semibold text-yellow-900'><i className="fas fa-hand-point-right mx-2"></i>Find Your Donar</h1><hr />
             <SearchBlood handleSearch={handleSearch} />
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-2 mt-4 mb-4'>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-4 mb-4'>
                 {isLoading ? (
                     <span className="absolute inset-0 flex justify-center items-center">
                         <span className="loading loading-bars loading-lg"></span>
@@ -85,14 +85,14 @@ const AllBlood = () => {
                     <p className="text-red-500 text-center">No data found.</p>
                 ) : (
                     ndonars.map((donar) => (
-                        <div key={donar.id} className="card w-48 bg-base-100 shadow-xl mx-auto">
+                        <div key={donar.id} className="card w-56 bg-base-100 shadow-xl mx-auto">
                             <figure>
-                                <img className='h-52 w-48' src={donar.photo} alt="Shoes" />
+                                <img className=' w-56' src={donar.photo} alt="Shoes" />
                             </figure>
                             <div className="card-body">
-                                <h2 className="text-center">{donar.name}</h2>
-                                <h2 className="text-center">{donar.group}</h2>
-                                <h2 className="text-center">{donar.contact}</h2>
+                                <h2 className="text-center">Name: <span className='font-semibold'>{donar.name}</span></h2>
+                                <h2 className="text-center">Group: <span className='font-bold'>{donar.group}</span></h2>
+                                <h2 className="text-center">Contact: <span className='font-semibold'>{donar.contact}</span></h2>
                                 {
                                     isAdmin && (<div className='flex justify-center'>
                                         <div >

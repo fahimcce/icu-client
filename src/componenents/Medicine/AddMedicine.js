@@ -10,7 +10,7 @@ const AddMedicine = () => {
         const price = form.price.value;
 
         const medicine = { name, price }
-        console.log(medicine)
+
         fetch('http://localhost:5000/medicine', {
             method: 'POST',
             headers: {
@@ -20,7 +20,7 @@ const AddMedicine = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success Fully',

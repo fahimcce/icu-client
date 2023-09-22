@@ -11,7 +11,6 @@ const AddAmbulance = () => {
         const category = form.category.value;
         const photo = form.photo.value;
         const ambulance = { photo, category, name, contact }
-        console.log(ambulance)
         fetch('http://localhost:5000/ambulance', {
             method: 'POST',
             headers: {
@@ -21,7 +20,7 @@ const AddAmbulance = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success Fully',

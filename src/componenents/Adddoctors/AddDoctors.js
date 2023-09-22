@@ -13,7 +13,7 @@ const AddDoctors = () => {
         const photo = form.photo.value;
         const details = form.details.value;
         const doctor = { doctorName, categories, designation, fees, photo, details }
-        console.log(doctor)
+
         fetch('http://localhost:5000/doctors', {
             method: 'POST',
             headers: {
@@ -23,7 +23,7 @@ const AddDoctors = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success Fully',

@@ -34,7 +34,7 @@ const Allicu = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log('delete', _id);
+
                 fetch(`http://localhost:5000/icu/${_id}`, {
                     method: 'DELETE'
                 })
