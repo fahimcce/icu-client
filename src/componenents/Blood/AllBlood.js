@@ -87,7 +87,7 @@ const AllBlood = () => {
                     ndonars.map((donar) => (
                         <div key={donar.id} className="card w-56 bg-base-100 shadow-xl mx-auto">
                             <figure>
-                                <img className=' w-56' src={donar.photo} alt="Shoes" />
+                                <img className='w-56 h-68' src={donar.photo} alt="" />
                             </figure>
                             <div className="card-body">
                                 <h2 className="text-center">Name: <span className='font-semibold'>{donar.name}</span></h2>

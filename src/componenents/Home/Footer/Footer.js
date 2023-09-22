@@ -7,22 +7,22 @@ const Footer = () => {
             <footer className="footer p-10 bg-neutral text-neutral-content mt-4 rounded-xl ">
                 <nav>
                     <header className="footer-title">Services</header>
-                    <Link className='link link-hover' to=''>
+                    <Link className='link link-hover' to='/allicu'>
                         ICU
                     </Link>
-                    <Link className='link link-hover' to=''>
+                    <Link className='link link-hover' to='/doctors'>
                         Doctors search
                     </Link>
-                    <Link className='link link-hover' to=''>
+                    <Link className='link link-hover' to='/allmedicine'>
                         medicine
                     </Link>
-                    <Link className='link link-hover' to=''>
+                    <Link className='link link-hover' to='/alllab'>
                         lab Tests
                     </Link>
-                    <Link className='link link-hover' to=''>
+                    <Link className='link link-hover' to='/allBlood'>
                         Blood Donar
                     </Link>
-                    <Link className='link link-hover' to=''>
+                    <Link className='link link-hover' to='/allAmbulance'>
                         Ambulance
                     </Link>
 
