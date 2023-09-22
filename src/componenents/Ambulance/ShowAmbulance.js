@@ -92,7 +92,7 @@ const ShowAmbulance = () => {
             </div>
 
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2'>
                 {isLoading ? ( // Check loading state
                     // Display loading bar while loading
                     <span className="absolute inset-0 flex justify-center items-center">
