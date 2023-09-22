@@ -31,7 +31,7 @@ const Registration = () => {
             setError(null);
         } catch (error) {
             // Handle the error and display it in the UI
-            setError(error.message); // Assuming the error message contains relevant information
+            setError("Already register!!Please Login"); // Assuming the error message contains relevant information
         }
     }
 

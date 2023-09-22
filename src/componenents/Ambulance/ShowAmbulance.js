@@ -92,7 +92,7 @@ const ShowAmbulance = () => {
             </div>
 
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1'>
                 {isLoading ? ( // Check loading state
                     // Display loading bar while loading
                     <span className="absolute inset-0 flex justify-center items-center">
@@ -101,8 +101,8 @@ const ShowAmbulance = () => {
                 ) :
 
                     filteredAmbulances.map(ambulance => (
-                        <div key={ambulance._id} className="card card-compact w-56 mx-auto bg-base-100 shadow-xl">
-                            <figure><img className='w-56 h-36' src={ambulance.photo} alt="Shoes" /></figure>
+                        <div key={ambulance._id} className="card card-compact w-60 mx-auto bg-base-100 shadow-xl">
+                            <figure><img className='w-60 h-36' src={ambulance.photo} alt="Shoes" /></figure>
                             <div className="card-body">
                                 <h2 className="text-center text-green-500 font-semibold">{ambulance.category}</h2>
                                 <h1>Driver name : <span className="text-lg font-semibold">{ambulance.name}</span></h1>

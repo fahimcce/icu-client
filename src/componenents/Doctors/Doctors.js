@@ -91,7 +91,7 @@ const Doctors = () => {
         <div className='mb-4'>
             <h1 className='text-3xl text-center font-semibold text-sky-600'><i className="fas fa-hand-point-right mx-2"></i>Find your Doctor..</h1><hr />
             <SearchBar handleSearch={handleSearch} />
-            <div className='grid grid-cols-1 lg:grid-cols-3 mt-4'>
+            <div className='grid grid-cols-1 lg:grid-cols-4 mt-4'>
                 {
                     isLoading ? ( // Check loading state
                         // Display loading bar while loading
@@ -103,25 +103,28 @@ const Doctors = () => {
                             <p className="text-red-500 text-center">No data found.</p>
                         ) : (
                             filteredDoctors.map((doctor) => (
-                                <div key={doctor._id} className="card w-72 bg-base-100 shadow-xl mx-auto mt-2">
+                                <div key={doctor._id} className="card w-56 bg-base-100 shadow-xl mx-auto mt-2">
                                     <figure><img src={doctor.photo} alt="Shoes" /></figure>
                                     <div className="card-body">
                                         <h2 className="text-center font-bold text-1xl">{doctor.doctorName}</h2>
                                         <h1 className='font-semibold'>Dept.: {doctor.categories}</h1>
                                         <p>{doctor.designation}</p>
-                                        <div className="card-actions justify-end">
+                                        <p>Fees : {doctor.fees}</p>
+                                        <div className="card-actions grid grid-cols-1">
                                             <button className="btn btn-primary text-white" onClick={() => openModal(doctor)}>
                                                 Appointment
                                             </button>
                                             {
                                                 isAdmin && <>
-                                                    <Link>
-                                                        <i className="fas fa-edit"></i>
-                                                    </Link>
-                                                    <button onClick={() => deleteDoctor(doctor._id)}>
-                                                        <i className="fas fa-trash-alt"></i>
-                                                    </button>
+                                                    <div className='flex justify-center'>
+                                                        <Link to={`/update/doctor/${doctor._id}`}>
+                                                            <i className="fas fa-edit mx-2"></i>
+                                                        </Link>
+                                                        <button onClick={() => deleteDoctor(doctor._id)}>
+                                                            <i className="fas fa-trash-alt"></i>
+                                                        </button>
 
+                                                    </div>
                                                 </>
                                             }
                                         </div>

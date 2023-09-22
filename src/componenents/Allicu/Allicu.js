@@ -18,12 +18,9 @@ const Allicu = () => {
     const isAdmin = user && user.email === 'admin@admin.com';
 
     useEffect(() => {
-        // Simulate loading data delay for demonstration purposes
         setTimeout(() => {
-            setIsLoading(false); // Mark loading as complete
-        }, 2000); // Adjust the delay time as needed
-
-        // You can replace the setTimeout with your actual data fetching logic
+            setIsLoading(false);
+        }, 2000);
     }, []);
 
     const deleteIcu = _id => {
@@ -91,15 +88,16 @@ const Allicu = () => {
                                 <div className="collapse-title grid grid-cols-1 lg:grid-cols-3 font-medium flex justify-between  border border-2 ">
                                     <h1 className='text-xl'>{icu.name}</h1>
                                     <h1 className='text-center'>Available Seats : <span className='text-red-600 font-bold'>{icu.seat}</span></h1>
-                                    <h1 className='text-center'>Updates : {icu.date}</h1>
+                                    <h1 className='text-center'>Updates : {icu.time}</h1>
                                 </div>
                                 <div className="collapse-content">
                                     <p>Price : <span className='font-bold'>{icu.price}</span> taka per day ."Based on patient situation"</p>
+                                    <p>Contact : <span className='font-bold'>{icu.contact}</span></p>
                                     <p>{icu.details}</p>
                                     {
                                         isAdmin && (<div className='flex justify-center'>
                                             <div >
-                                                <Link className='mx-2' to='/'>
+                                                <Link className='mx-2' to={`/update/icu/${icu._id}`}>
                                                     <i className="fas fa-edit"></i>
                                                 </Link>
                                             </div>

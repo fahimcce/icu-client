@@ -68,7 +68,7 @@ const AllDiagnostic = () => {
     }
 
     return (
-        <div>
+        <div className='mb-4'>
             <h1 className='text-3xl text-center font-semibold text-green-600'><i className="fas fa-hand-point-right mx-2"></i>Lab Test Prices</h1><hr />
             <div>
                 <SearchBar handleSearch={handleSearch} />

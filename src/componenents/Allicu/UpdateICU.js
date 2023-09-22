@@ -1,8 +1,10 @@
 import React from 'react';
-import Swal from 'sweetalert2';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
+const UpdateICU = () => {
+    const updateICU = useLoaderData();
+    let navigate = useNavigate()
 
-const AddICU = () => {
     const currentDate = new Date();
 
     // Options for formatting date
@@ -25,7 +27,7 @@ const AddICU = () => {
     const time = `Date: ${formattedDate} || Time: ${formattedTime}`;
 
 
-    const handleAdd = event => {
+    const handleUpdateICU = event => {
         event.preventDefault()
 
         const form = event.target;
@@ -34,12 +36,9 @@ const AddICU = () => {
         const price = form.price.value;
         const details = form.details.value;
         const contact = form.contact.value;
-
-
         const icu = { name, seat, price, details, contact, time }
-
-        fetch('http://localhost:5000/icu', {
-            method: 'POST',
+        fetch(`http://localhost:5000/update/icu/${updateICU._id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -47,35 +46,27 @@ const AddICU = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: 'Success Fully',
-                        text: 'New ICU added',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    })
+                if (data.modifiedCount > 0) {
+                    alert('Update SuccessFully')
                     form.reset();
+                    navigate('/allicu')
                 }
             })
     }
-
-
-
     return (
         <div>
-
             <div className='mb-4'>
-                <h3 className='text-2xl py-1 mb-2 mt-14 text-white font-semibold bg-amber-700 w-1/2 mx-auto'><p className='text-center'>Add New ICU</p></h3>
+                <h3 className='text-2xl py-1 mb-2 mt-14 text-white font-semibold bg-amber-700 w-1/2 mx-auto'><p className='text-center'>Update for :{updateICU.name}</p></h3>
                 <hr />
 
                 <div className='w-3/4 mx-auto'>
-                    <form onSubmit={handleAdd}>
+                    <form onSubmit={handleUpdateICU}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Hospital Name</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="name" placeholder="Enter Hospital Name" className="input input-bordered w-full" />
+                                <input type="text" name="name" defaultValue={updateICU.name} className="input input-bordered w-full" />
                             </label>
                         </div>
                         <div className="form-control">
@@ -83,7 +74,7 @@ const AddICU = () => {
                                 <span className="label-text">Available ICU Number</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="number" placeholder="Enter number of seats available" className="input input-bordered w-full" />
+                                <input type="text" name="number" defaultValue={updateICU.seat} className="input input-bordered w-full" />
                             </label>
                         </div>
                         <div className="form-control">
@@ -91,7 +82,7 @@ const AddICU = () => {
                                 <span className="label-text">Price</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="price" placeholder="Enter Price" className="input input-bordered w-full" />
+                                <input type="text" name="price" defaultValue={updateICU.price} className="input input-bordered w-full" />
                             </label>
                         </div>
                         <div className="form-control">
@@ -99,7 +90,7 @@ const AddICU = () => {
                                 <span className="label-text">Contact</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="contact" placeholder="Enter Contact Number" className="input input-bordered w-full" />
+                                <input type="text" name="contact" defaultValue={updateICU.contact} className="input input-bordered w-full" />
                             </label>
                         </div>
                         <div className="form-control">
@@ -107,7 +98,7 @@ const AddICU = () => {
                                 <span className="label-text">Details</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="details" placeholder="Enter details" className="input input-bordered w-full" />
+                                <input type="text" name="details" defaultValue={updateICU.details} className="input input-bordered w-full" />
                             </label>
                         </div>
 
@@ -121,4 +112,4 @@ const AddICU = () => {
     );
 };
 
-export default AddICU;
+export default UpdateICU;
