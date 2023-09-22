@@ -10,8 +10,8 @@ const Services = () => {
                 <h1 className='text-left text-xl font-bold'>Our Services</h1>
                 <hr />
             </div>
-            <div >
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 '>
+            <div>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mx-auto'>
                     {/* Card 01 */}
                     <div className="card w-72 bg-base-100 shadow-xl  mx-auto">
                         <figure className="px-10 pt-10">

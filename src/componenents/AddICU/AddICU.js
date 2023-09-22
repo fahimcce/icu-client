@@ -22,7 +22,7 @@ const AddICU = () => {
 
     const formattedDate = currentDate.toLocaleString('en-US', dateOptions);
     const formattedTime = currentDate.toLocaleString('en-US', timeOptions);
-    const time = `Date: ${formattedDate} || Time: ${formattedTime}`;
+    const time = `${formattedDate} || Time: ${formattedTime}`;
 
 
     const handleAdd = event => {
